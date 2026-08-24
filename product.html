@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — Magnex International Trade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=12">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><rect width='44' height='44' rx='8' fill='%2317171a'/><path d='M10 32 L17 13 L22 25 L27 13 L34 32' fill='none' stroke='%23c9a86a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+</head>
+<body>
+
+<section class="phead" style="border-bottom:0">
+  <div class="wrap">
+    <nav class="crumb" id="crumb"></nav>
+  </div>
+</section>
+
+<section style="background:var(--bg-2);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="pdetail" style="padding-bottom:90px">
+
+      <!-- LEFT: viewer + varieties -->
+      <div>
+        <p class="eyebrow" id="pdOrigin"></p>
+        <h1 class="h-section" id="pdName"></h1>
+        <p class="lede" id="pdShort" style="margin:18px 0 34px"></p>
+
+        <div class="viewer rv">
+          <div class="viewer__frame" id="magFrame">
+            <canvas class="viewer__main"></canvas>
+            <div class="viewer__lens"><canvas></canvas></div>
+            <div class="viewer__tag" id="pdGrainTag"></div>
+            <div class="viewer__hint">
+              <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="M16 16l5.5 5.5"/></svg>
+              Hover to magnify the grains
+            </div>
+          </div>
+        </div>
+
+        <div class="pd__meta">
+          <div><div class="k">Origin</div><div class="v" id="mOrigin"></div></div>
+          <div><div class="k">New Crops In</div><div class="v" id="mCrop"></div></div>
+          <div><div class="k">Category</div><div class="v" id="mCat"></div></div>
+        </div>
+
+        <a class="spec-jump" href="#specWrap" id="specJump">View Full Specifications <span class="spec-jump__arw">↓</span></a>
+
+      </div>
+
+      <!-- RIGHT: varieties with hover image reveal -->
+      <div class="varside rv">
+        <p class="eyebrow" style="margin-bottom:8px">Available Varieties</p>
+        <h2 class="h-sub" id="varTitle"></h2>
+        <ul class="vars__list" id="varList"></ul>
+        <p class="vars__hint">Click a variety to view it in the image — then hover the image to magnify the grains.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPECIFICATIONS — full width ============ -->
+<section class="section--tight section section--alt" id="specSection">
+  <div class="wrap">
+    <p class="eyebrow rv">Technical Data</p>
+    <h2 class="h-sub rv" id="specTitle">Full Specifications</h2>
+    <div class="spec2 rv">
+      <div class="spec2__crop" id="specCrop"></div>
+      <div class="spec2__grid" id="specBody"></div>
+      <div class="spec2__cta">
+        <a class="btn btn--solid" href="index.html#contact" id="quoteBtn">Request a Quote</a>
+        <a class="btn btn--ghost" href="#" id="mailBtn">Email Specification Sheet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- related ring — pins while scroll rotates it -->
+<section class="ringscroll" id="relSection">
+  <div class="ringscroll__sticky">
+    <div class="wrap">
+      <p class="eyebrow">Varieties</p>
+      <h2 class="h-section">Explore Our Selection</h2>
+      <p class="lede" style="margin-top:16px" id="relLede"></p>
+    </div>
+    <div class="ring" id="relRing"></div>
+  </div>
+</section>
+
+<script src="assets/js/data.js?v=8"></script>
+<script src="assets/js/textures.js?v=8"></script>
+<script src="assets/js/widgets.js?v=8"></script>
+<script>
+function pageInit() {
+  const p = findProduct(qp("id")) || findProduct("basmati-1121");
+  const group = findGroup(p.catId, p.groupId);
+
+  document.title = `${p.name} — Magnex International Trade`;
+  document.getElementById("crumb").innerHTML =
+    `<a href="index.html">Home</a><i>›</i><a href="products.html">Products</a><i>›</i>` +
+    `<a href="category.html?cat=${p.catId}">${p.catName}</a><i>›</i>` +
+    `<a href="category.html?cat=${p.catId}&group=${p.groupId}">${p.groupName}</a><i>›</i><b>${p.name}</b>`;
+
+  document.getElementById("pdOrigin").textContent = "Origin: " + p.origin;
+  document.getElementById("pdName").textContent = p.name;
+  document.getElementById("pdShort").textContent = p.short;
+  document.getElementById("pdGrainTag").textContent = "100% export grade";
+  document.getElementById("mOrigin").textContent = p.origin;
+  document.getElementById("mCrop").textContent = p.crop;
+  document.getElementById("mCat").textContent = p.catName;
+
+  // magnifier — real photo when available, procedural texture otherwise
+  const mag = buildMagnifier(document.getElementById("magFrame"), p.texture, p.id, 2.8, p.photo || null);
+
+  // varieties — click a name to load its photo into the main viewer
+  const vars = (p.varieties || []).map(v => ({ name: v.name || v, photo: v.photo || null }));
+  document.getElementById("varTitle").textContent = `Get ${p.name} in the following varieties`;
+  document.getElementById("varList").innerHTML = vars.map((v, i) => `
+    <li data-i="${i}"><a href="#" role="button">
+      <span class="vars__n">${v.name}</span>
+      <span class="vars__plus">＋</span>
+    </a></li>`).join("");
+
+  const grainTag = document.getElementById("pdGrainTag");
+  function showVariety(i) {
+    const v = vars[i];
+    mag.setPhoto(v.photo || p.photo || null) ;
+    grainTag.textContent = v.name.replace(/^.*?–\s*/, "");   // short label in the viewer corner
+    document.querySelectorAll("#varList li").forEach((li, j) =>
+      li.classList.toggle("is-active", j === i));
+    document.getElementById("magFrame").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+  document.querySelectorAll("#varList li a").forEach((a, i) =>
+    a.addEventListener("click", e => { e.preventDefault(); showVariety(i); }));
+
+  // specifications section
+  document.getElementById("specTitle").textContent = `${p.name} — Full Specifications`;
+  document.getElementById("specCrop").textContent = "New Crop Months: " + p.crop;
+  document.getElementById("specBody").innerHTML = p.specs.map(([k, v]) =>
+    `<div class="spec2__row"><span class="k">${k}</span><span class="v">${v}</span></div>`).join("");
+  const subject = encodeURIComponent(`Specification request — ${p.name}`);
+  document.getElementById("mailBtn").href = `mailto:${SITE.email}?subject=${subject}`;
+
+  // jump arrow → scroll to the specifications section
+  document.getElementById("specJump").addEventListener("click", e => {
+    e.preventDefault();
+    document.getElementById("specSection").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  // related products ring — others in the same group first, then same category
+  let rel = group.products.filter(x => x.id !== p.id)
+    .map(x => ({ ...x, catId: p.catId, catName: p.catName, groupId: p.groupId, groupName: p.groupName }));
+  if (rel.length < 4) {
+    const extra = allProducts().filter(x => x.catId === p.catId && x.id !== p.id && !rel.some(r => r.id === x.id));
+    rel = rel.concat(extra);
+  }
+  if (rel.length < 4) {
+    const extra = allProducts().filter(x => x.id !== p.id && !rel.some(r => r.id === x.id)).slice(0, 8 - rel.length);
+    rel = rel.concat(extra);
+  }
+  document.getElementById("relLede").textContent = `Other products from ${p.groupName}.`;
+  buildScrollRing(document.getElementById("relSection"), document.getElementById("relRing"), rel.slice(0, 10));
+}
+</script>
+<script src="assets/js/main.js?v=8"></script>
+</body>
+</html>

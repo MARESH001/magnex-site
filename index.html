@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magnex International Trade — Premium Indian Commodities, Delivered Worldwide</title>
+<meta name="description" content="Rice, tea, spices, coffee, oil seeds, pulses, dry fruits and more — sourced from India's finest producing regions. Bulk, private label, and custom packaging for importers across 40+ countries.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=12">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><rect width='44' height='44' rx='8' fill='%2317171a'/><path d='M10 32 L17 13 L22 25 L27 13 L34 32' fill='none' stroke='%23c9a86a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+</head>
+<body>
+
+<!-- ============ HERO — framed video card ============ -->
+<section class="vhero">
+  <div class="vhero__card">
+    <video class="vhero__video" autoplay muted loop playsinline>
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+    <div class="vhero__shade"></div>
+    <div class="vhero__content">
+      <p class="vhero__badge">ISO Certified · FSSAI Compliant · APEDA Registered</p>
+      <h1 class="vhero__line"><em>Cultivating</em> a Richer Harvest Through <em>Trusted</em></h1>
+      <div class="vhero__big">AGRICULTURE</div>
+      <div class="vhero__cta">
+        <a class="btn btn--solid" href="#contact">Request a Quote</a>
+        <a class="btn btn--ghost" href="products.html">Explore Products</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- marquee strip -->
+<div class="strip" aria-hidden="true">
+  <div class="strip__track" id="stripTrack"></div>
+</div>
+
+<!-- ============ WHAT WE TRADE — flowing strip ============ -->
+<section class="section" id="trade">
+  <div class="wrap">
+    <p class="eyebrow rv">Our Export Portfolio</p>
+    <h2 class="h-section rv">What We Trade</h2>
+    <p class="lede rv" style="margin-top:20px">A wide portfolio of Indian agricultural commodities — available in bulk, private label, and customised packaging for your market.</p>
+  </div>
+  <div class="tradefeed rv">
+    <a class="tradefeed__cta" href="products.html">
+      <span class="tradefeed__cta-eyebrow">Full Portfolio</span>
+      <span class="tradefeed__cta-title">Visit All<br>Products</span>
+      <span class="tradefeed__cta-count" id="tfCount"></span>
+      <span class="tradefeed__cta-go">Explore <span class="arw"></span></span>
+    </a>
+    <div class="tradefeed__viewport">
+      <div class="tradefeed__track" id="tfTrack"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY US ============ -->
+<section class="section" id="why">
+  <div class="wrap">
+    <p class="eyebrow rv">Why Magnex</p>
+    <h2 class="h-section rv">Specification-Driven.<br><em class="italic-gold">Every Shipment.</em></h2>
+    <div class="why rv">
+      <div class="why__c">
+        <div class="why__n">01</div>
+        <h3 class="why__t">Source-Direct Procurement</h3>
+        <p class="why__d">We buy at origin — from paddy belts, spice gardens and estates — cutting intermediaries and locking quality at the farm gate.</p>
+      </div>
+      <div class="why__c">
+        <div class="why__n">02</div>
+        <h3 class="why__t">Buyer-Approved Specs</h3>
+        <p class="why__d">Grain length, moisture, purity, ageing and packing are agreed before contract and verified against sealed retention samples.</p>
+      </div>
+      <div class="why__c">
+        <div class="why__n">03</div>
+        <h3 class="why__t">Private Label Ready</h3>
+        <p class="why__d">Finished retail packs from 500g to 50kg with your artwork, barcoding and destination-market compliance handled end to end.</p>
+      </div>
+      <div class="why__c">
+        <div class="why__n">04</div>
+        <h3 class="why__t">Documentation & Logistics</h3>
+        <p class="why__d">Phytosanitary, fumigation, COO, lab reports and inspection certificates managed in-house, with CIF/FOB shipment worldwide.</p>
+      </div>
+    </div>
+    <div class="stats rv">
+      <div class="stat"><div class="stat__v" data-count="40">0</div><div class="stat__l">Countries Served</div></div>
+      <div class="stat"><div class="stat__v" data-count="120">0</div><div class="stat__l">Products & Grades</div></div>
+      <div class="stat"><div class="stat__v" data-count="2400">0</div><div class="stat__l">Containers / Year</div></div>
+      <div class="stat"><div class="stat__v" data-count="17">0</div><div class="stat__l">Years of Trade</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="faq">
+      <div class="faq__aside rv">
+        <h2 class="h-section">FAQs</h2>
+        <p>Have more questions? Contact us for more information.</p>
+        <a class="btn btn--solid" href="#contact">Talk to Us</a>
+      </div>
+      <div class="faq__list rv" id="faqList"></div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/data.js?v=8"></script>
+<script src="assets/js/textures.js?v=8"></script>
+<script src="assets/js/widgets.js?v=8"></script>
+<script>
+function pageInit() {
+  /* marquee */
+  const words = ["Basmati Rice","Assam Tea","Robusta Coffee","Turmeric Finger","Green Cardamom","Kabul Chickpeas","Hulled Sesame","Cumin Seeds","Cashew Kernels","Red Chilli","Wheat & Millets","Dehydrated Onion"];
+  const half = words.map(w => `<span>${w}</span>`).join("");
+  document.getElementById("stripTrack").innerHTML = half + half;
+
+  /* trade feed — auto-flowing picture strip */
+  const cats = Object.entries(CATALOG);
+  const totalProducts = cats.reduce((a, [, c]) => a + c.groups.reduce((x, g) => x + g.products.length, 0), 0);
+  document.getElementById("tfCount").textContent = `${totalProducts}+ products · ${cats.length} categories`;
+  const cardHTML = (cid, c, dup) => `
+    <a class="tfcard" href="category.html?cat=${cid}" ${dup ? 'tabindex="-1" aria-hidden="true"' : ""}>
+      <div class="tfcard__media"><canvas data-tex="${c.texture}" data-seed="tf-${cid}"></canvas></div>
+      <div class="tfcard__body">
+        <span class="tfcard__name">${c.name}</span>
+        <span class="tfcard__tag">${c.tagline}</span>
+      </div>
+    </a>`;
+  const one = cats.map(([cid, c]) => cardHTML(cid, c, false)).join("");
+  const two = cats.map(([cid, c]) => cardHTML(cid, c, true)).join("");
+  document.getElementById("tfTrack").innerHTML = one + two; // duplicated for a seamless loop
+
+  /* FAQ */
+  renderFAQ(document.getElementById("faqList"), [
+    ["What agricultural products do you export from India?", "We export a comprehensive range of Indian agro commodities — premium Basmati and non-Basmati rice, Indian teas from Assam, Darjeeling and Nilgiri, Arabica and Robusta coffee, whole and ground spices, oil seeds, pulses, cereals, dry fruits, dehydrated vegetables, and superfoods. All sourced directly from India's finest producing regions."],
+    ["Which countries and regions do you export to?", "We serve importers, distributors and private-label brands across 40+ countries — the Middle East, Europe, North America, Africa, Asia-Pacific, Australia and CIS markets — on CIF, CFR and FOB terms."],
+    ["What tea varieties do you offer?", "Assam CTC (BP and BOP grades), Assam Orthodox, Darjeeling Orthodox across all three flushes, Nilgiri Orthodox and CTC, and Indian green tea in leaf and dust grades."],
+    ["Do you offer private labeling and custom packaging?", "Yes. We deliver finished retail packs from 500g pouches to 50kg bulk bags with your artwork, multilingual labelling, barcoding, and destination-market compliance handled end to end."],
+    ["What is your minimum order quantity?", "Typically one 20' FCL per product. Mixed-container loads across products can be arranged for established buyers."],
+    ["What certifications do your products meet?", "Our supply chain operates under ISO and FSSAI certified facilities and APEDA registration. Phytosanitary certificates, fumigation certificates, certificates of origin, and third-party lab reports accompany every shipment."]
+  ]);
+
+  /* stat counters */
+  const cio = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    cio.unobserve(e.target);
+    const end = +e.target.dataset.count, t0 = performance.now();
+    (function tick(t) {
+      const p = Math.min(1, (t - t0) / 1600);
+      e.target.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))).toLocaleString() + (p === 1 ? "+" : "");
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  }), { threshold: .6 });
+  document.querySelectorAll("[data-count]").forEach(el => cio.observe(el));
+}
+</script>
+<script src="assets/js/main.js?v=8"></script>
+</body>
+</html>

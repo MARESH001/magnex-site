@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Category — Magnex International Trade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=12">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><rect width='44' height='44' rx='8' fill='%2317171a'/><path d='M10 32 L17 13 L22 25 L27 13 L34 32' fill='none' stroke='%23c9a86a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+</head>
+<body>
+
+<section class="phead" id="phead">
+  <video class="phead__video" id="pheadVideo" autoplay muted loop playsinline hidden></video>
+  <div class="phead__shade" id="pheadShade" hidden></div>
+  <div class="wrap phead__content">
+    <nav class="crumb" id="crumb"></nav>
+    <div class="phead__body">
+      <div>
+        <p class="eyebrow" id="catTag"></p>
+        <h1 class="h-section" id="catTitle"></h1>
+        <p id="groupDesc"></p>
+      </div>
+    </div>
+    <div class="tabs" id="groupTabs"></div>
+  </div>
+</section>
+
+<section class="section--tight section">
+  <div class="wrap">
+    <div class="pgrid" id="prodGrid"></div>
+  </div>
+</section>
+
+<section class="section section--alt" id="aboutSec" hidden>
+  <div class="wrap">
+    <div class="aboutsplit" id="aboutSplit">
+      <div class="rv">
+        <p class="eyebrow">Overview</p>
+        <h2 class="h-sub" id="aboutTitle"></h2>
+        <hr class="rule" style="margin-top:24px">
+        <div id="aboutBody"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faqSec" hidden>
+  <div class="wrap">
+    <div class="faq">
+      <div class="faq__aside rv">
+        <h2 class="h-section">FAQs</h2>
+        <p>Have more questions? Contact us for more information.</p>
+        <a class="btn btn--solid" href="index.html#contact">Talk to Us</a>
+      </div>
+      <div class="faq__list rv" id="faqList"></div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/data.js?v=8"></script>
+<script src="assets/js/textures.js?v=8"></script>
+<script src="assets/js/widgets.js?v=8"></script>
+<script>
+function pageInit() {
+  const catId = qp("cat") || "rice";
+  const cat = CATALOG[catId] || CATALOG.rice;
+  const gid = qp("group") || cat.groups[0].id;
+  const group = cat.groups.find(g => g.id === gid) || cat.groups[0];
+
+  document.title = `${group.name} — ${cat.name} — Magnex International Trade`;
+  document.getElementById("crumb").innerHTML =
+    `<a href="index.html">Home</a><i>›</i><a href="products.html">Products</a><i>›</i><a href="category.html?cat=${catId}">${cat.name}</a><i>›</i><b>${group.name}</b>`;
+  document.getElementById("catTag").textContent = cat.tagline;
+  document.getElementById("catTitle").textContent = group.name;
+  document.getElementById("groupDesc").textContent = group.desc;
+
+  // group tabs (Basmati / Non-Basmati etc.)
+  document.getElementById("groupTabs").innerHTML = cat.groups.map(g =>
+    `<a class="tab${g.id === group.id ? " is-on" : ""}" href="category.html?cat=${catId}&group=${g.id}">${g.name}</a>`
+  ).join("");
+
+  // product cards
+  document.getElementById("prodGrid").innerHTML = group.products.map(p => `
+    <a class="pcard rv" href="product.html?id=${p.id}">
+      <div class="pcard__media">${p.photo
+        ? `<img src="${p.photo}" alt="${p.name}" loading="lazy">`
+        : `<canvas data-tex="${p.texture}" data-seed="${p.id}"></canvas>`}</div>
+      <div class="pcard__body">
+        <div class="pcard__t">${p.name}</div>
+        <div class="pcard__d">${p.short}</div>
+        <span class="pcard__go">View details <span class="arw"></span></span>
+      </div>
+    </a>`).join("");
+
+  // about — first paragraph styled as a lead, the rest as body text
+  if (group.about && group.about.length) {
+    document.getElementById("aboutSec").hidden = false;
+    document.getElementById("aboutTitle").textContent = `About ${group.name}`;
+    const [lead, ...rest] = group.about;
+    document.getElementById("aboutBody").innerHTML =
+      `<p class="about-lead">${lead}</p>` + rest.map(t => `<p>${t}</p>`).join("");
+  }
+
+  // category video plays behind the page header words
+  if (cat.video) {
+    const v = document.getElementById("pheadVideo");
+    v.src = cat.video.src; v.hidden = false;
+    document.getElementById("pheadShade").hidden = false;
+    document.getElementById("phead").classList.add("phead--video");
+  }
+
+  // FAQs
+  if (group.faqs && group.faqs.length) {
+    document.getElementById("faqSec").hidden = false;
+    renderFAQ(document.getElementById("faqList"), group.faqs);
+  }
+}
+</script>
+<script src="assets/js/main.js?v=8"></script>
+</body>
+</html>
