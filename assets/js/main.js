@@ -3,11 +3,9 @@
    ========================================================= */
 
 const LOGO_SVG = `
-<svg class="brand__mark" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-  <rect width="44" height="44" rx="8" fill="#17171a"/>
-  <rect width="44" height="44" rx="8" fill="none" stroke="rgba(201,168,106,.4)"/>
-  <path d="M10 32 L17 13 L22 25 L27 13 L34 32" fill="none" stroke="#c9a86a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M10 32 L34 32" stroke="rgba(201,168,106,.5)" stroke-width="1.4" stroke-linecap="round"/>
+<svg class="brand__mark" viewBox="0 0 100 55.53" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs><linearGradient id="mgx" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#45d4fe"/><stop offset="1" stop-color="#1a8fd4"/></linearGradient></defs>
+  <path d="M99.9 55.2 L82.6 38.9 L82.1 47.9 L74.6 47.8 L74.5 0.0 L50.4 25.0 L49.8 3.0 L0.0 55.2 L21.6 55.3 L34.3 42.3 L34.5 55.3 L49.9 55.3 L50.1 48.1 L58.7 39.0 L59.5 55.4 Z" fill="url(#mgx)"/>
 </svg>`;
 
 function catLink(cid) { return `category.html?cat=${cid}`; }
