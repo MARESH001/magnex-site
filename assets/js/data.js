@@ -32,6 +32,7 @@ const CATALOG = {
 
   /* ======================================================= RICE */
   rice: {
+    photo: IMG + "basmati-1121.png",
     name: "Indian Rice",
     tagline: "Basmati & Non-Basmati export grades",
     desc: "Premium Basmati and Non-Basmati rice sourced from India's finest paddy belts, milled, aged and graded strictly to buyer-approved specifications for retail, bulk and private-label programs.",
@@ -257,6 +258,7 @@ const CATALOG = {
 
   /* ======================================================== TEA */
   tea: {
+    photo: IMG + "tea/assam-orthodox.jpg",
     name: "Indian Tea",
     tagline: "Assam · Darjeeling · Nilgiri",
     desc: "India produces over 1.3 billion kg of tea annually — second only to China. From the malty intensity of Assam to the muscatel elegance of Darjeeling and the bright fragrance of Nilgiri, Indian tea offers unmatched diversity for blenders, packagers, and specialty retailers.",
@@ -376,6 +378,7 @@ const CATALOG = {
 
   /* ===================================================== COFFEE */
   coffee: {
+    photo: IMG + "coffee/arabica-plantation-aaa.jpg",
     name: "Coffee",
     tagline: "Arabica & Robusta from Indian estates",
     desc: "Shade-grown Indian coffee from the Western Ghats — washed Arabica plantation and natural cherry grades, bold Robusta cherry and parchment, and instant coffee formats for roasters and blenders worldwide.",
@@ -500,6 +503,7 @@ const CATALOG = {
 
   /* ===================================================== SPICES */
   spices: {
+    photo: IMG + "spices/green-cardamom-8mm.jpg",
     name: "Indian Spices",
     tagline: "Whole & powdered spices",
     desc: "Black pepper, green cardamom, red chilli, dry ginger, cumin and turmeric powder — steam-sterilised, ASTA-clean and packed for retail or bulk, from the spice gardens of India.",
@@ -663,6 +667,7 @@ const CATALOG = {
           },
           {
             id: "custom-blends",
+            photo: IMG + "spices/custom-blends.jpg",
             name: "Custom Spice Blends",
             short: "Buyer-recipe masalas and seasonings blended, sterilised and packed under private label.",
             origin: "India", crop: "Year-round", texture: "powder-red",
@@ -680,6 +685,7 @@ const CATALOG = {
 
   /* =================================================== OIL SEEDS */
   oilseeds: {
+    photo: IMG + "oilseeds/hulled-sesame.jpg",
     name: "Oil Seeds",
     tagline: "Sesame · Groundnut · Niger",
     desc: "Natural and hulled sesame, bold and java groundnuts, and niger seeds — machine-cleaned, sortexed and shipped to defined purity, FFA and aflatoxin limits.",
@@ -700,6 +706,7 @@ const CATALOG = {
         products: [
           {
             id: "hulled-sesame",
+            photo: IMG + "oilseeds/hulled-sesame.jpg",
             name: "Hulled Sesame Seeds",
             short: "Pearl-white auto-dried hulled sesame at 99.95% purity for bakery, tahini and confectionery applications.",
             origin: "Gujarat, India", crop: "October – December", texture: "sesame",
@@ -713,6 +720,7 @@ const CATALOG = {
           },
           {
             id: "natural-sesame",
+            photo: IMG + "oilseeds/natural-sesame.jpg",
             name: "Natural Sesame Seeds",
             short: "Whitish and black natural sesame, sortex-cleaned to 99.90/0.10 for oil crushing and food use.",
             origin: "Gujarat / Rajasthan, India", crop: "October – December", texture: "sesame",
@@ -725,6 +733,7 @@ const CATALOG = {
           },
           {
             id: "groundnut-bold",
+            photo: IMG + "oilseeds/groundnut-bold.jpg",
             name: "Groundnuts – Bold & Java",
             short: "Bold 38/42–50/55 and Java 45/50–80/90 groundnut kernels, aflatoxin-tested for edible and crushing markets.",
             origin: "Gujarat, India", crop: "October – March", texture: "chickpea",
@@ -738,6 +747,7 @@ const CATALOG = {
           },
           {
             id: "niger-seeds",
+            photo: IMG + "oilseeds/niger-seeds.jpg",
             name: "Niger Seeds",
             short: "Machine-cleaned niger seeds at 99% purity, primarily for bird-feed and oil extraction markets.",
             origin: "Madhya Pradesh, India", crop: "November – January", texture: "seeds",
@@ -754,6 +764,7 @@ const CATALOG = {
 
   /* ====================================================== PULSES */
   pulses: {
+    photo: IMG + "pulses/kabul-chickpeas.jpg",
     name: "Pulses",
     tagline: "Chickpeas · Lentils · Moong",
     desc: "Kabul chickpeas, toor dal, red lentils and green moong — machine-graded, polished and packed for staple-food and retail programs worldwide.",
@@ -773,6 +784,7 @@ const CATALOG = {
         products: [
           {
             id: "kabul-chickpeas",
+            photo: IMG + "pulses/kabul-chickpeas.jpg",
             name: "Kabul Chickpeas",
             short: "Cream-white bold chickpeas graded 40/42 to 60/62 count, machine-cleaned and polished for premium retail.",
             origin: "Madhya Pradesh / Maharashtra, India", crop: "March – May", texture: "chickpea",
@@ -786,6 +798,7 @@ const CATALOG = {
           },
           {
             id: "toor-dal",
+            photo: IMG + "pulses/toor-dal.jpg",
             name: "Toor Dal",
             short: "Oil-polished and unpolished split pigeon peas, the staple dal of Indian cuisine, milled to uniform grain size.",
             origin: "Maharashtra / Karnataka, India", crop: "December – February", texture: "pulses-yellow",
@@ -798,6 +811,7 @@ const CATALOG = {
           },
           {
             id: "red-lentils",
+            photo: IMG + "pulses/red-lentils.jpg",
             name: "Red Lentils (Masoor)",
             short: "Whole and split red lentils (football & split masoor) machine-cleaned for global staple markets.",
             origin: "Madhya Pradesh, India", crop: "February – April", texture: "spice-red",
@@ -809,6 +823,7 @@ const CATALOG = {
           },
           {
             id: "green-moong",
+            photo: IMG + "pulses/green-moong.jpg",
             name: "Green Moong – Whole & Split",
             short: "Sortex-cleaned green gram in whole, split and skinned formats for sprouting and dal markets.",
             origin: "Rajasthan, India", crop: "October – November", texture: "pulses-green",
@@ -826,6 +841,7 @@ const CATALOG = {
 
   /* ===================================================== CEREALS */
   cereals: {
+    photo: IMG + "cereals/wheat-milling.jpg",
     name: "Cereals & Grains",
     tagline: "Corn · Wheat · Millets · Flour",
     desc: "Yellow corn in bold and small grades, milling wheat, ancient millets and wheat flour (atta / maida) supplied in bulk and consumer packs.",
@@ -863,6 +879,7 @@ const CATALOG = {
           },
           {
             id: "wheat-milling",
+            photo: IMG + "cereals/wheat-milling.jpg",
             name: "Milling Wheat",
             short: "Lustrous Indian milling wheat with 11–12.5% protein for flour mills and food programs.",
             origin: "Madhya Pradesh / Punjab, India", crop: "March – May", texture: "wheat",
@@ -875,10 +892,16 @@ const CATALOG = {
           },
           {
             id: "millets",
+            photo: IMG + "cereals/millet-bajra.jpg",
             name: "Millets – Bajra, Jowar, Ragi",
             short: "Ancient-grain millet family cleaned and graded for health-food and staple markets.",
             origin: "Rajasthan / Karnataka, India", crop: "October – December", texture: "seeds",
-            varieties: ["Pearl Millet (Bajra)", "Sorghum (Jowar) – White", "Finger Millet (Ragi)", "Foxtail Millet"],
+            varieties: [
+              { name: "Pearl Millet (Bajra)", photo: IMG + "cereals/millet-bajra.jpg" },
+              { name: "Sorghum (Jowar) – White", photo: IMG + "cereals/millet-jowar.jpg" },
+              { name: "Finger Millet (Ragi)", photo: IMG + "cereals/millet-ragi.jpg" },
+              { name: "Foxtail Millet", photo: IMG + "cereals/millet-foxtail.jpg" }
+            ],
             specs: [
               ["Purity", "99% Sortex"], ["Moisture", "12% max."], ["Admixture", "1% max."],
               ["20' Container", "24 MT"], ["Packaging", "PP Bags 25/50kg, Retail Pouches"],
@@ -887,6 +910,7 @@ const CATALOG = {
           },
           {
             id: "wheat-flour",
+            photo: IMG + "cereals/wheat-flour.jpg",
             name: "Wheat Flour – Atta & Maida",
             short: "Chakki-fresh atta and refined maida milled to buyer gluten and ash specification, packed for retail or bulk.",
             origin: "India", crop: "Year-round milling", texture: "wheat",
@@ -904,6 +928,7 @@ const CATALOG = {
 
   /* ================================================= ANIMAL FEED */
   animalfeed: {
+    photo: IMG + "animal-feed/yellow-corn.jpg",
     name: "Animal Feed",
     tagline: "Feed-grade yellow corn",
     desc: "Feed-grade yellow corn for poultry, cattle and aqua feed mills — dried, cleaned and aflatoxin-tested, supplied in bulk and bagged container loads.",
@@ -947,6 +972,7 @@ const CATALOG = {
 
   /* =================================================== DRY FRUITS */
   dryfruits: {
+    photo: IMG + "dryfruits/white-whole-cashews-w-240.jpg",
     name: "Dry Fruits",
     tagline: "Cashews · Raisins · Almonds",
     desc: "Indian cashew kernels in white and scorched whole grades W-180 to W-450, raisins from Nashik vineyards and premium almonds, graded and vacuum-packed for retail and wholesale.",
@@ -1023,6 +1049,7 @@ const CATALOG = {
         products: [
           {
             id: "raisins",
+            photo: IMG + "dryfruits/raisins.jpg",
             name: "Raisins – Golden & Black",
             short: "Sun-ripened Nashik raisins, machine sorted and washed, in golden, green and black varieties.",
             origin: "Maharashtra, India", crop: "March – May", texture: "raisin",
@@ -1034,6 +1061,7 @@ const CATALOG = {
           },
           {
             id: "almonds",
+            photo: IMG + "dryfruits/almonds.jpg",
             name: "Almond Kernels",
             short: "Premium almond kernels sorted by size and colour, supplied whole, sliced or blanched.",
             origin: "India (processed)", crop: "Year-round", texture: "almond",
@@ -1050,6 +1078,7 @@ const CATALOG = {
 
   /* =================================================== DEHYDRATED */
   dehydrated: {
+    photo: IMG + "dehydrated/red-onion-flakes.jpg",
     name: "Dehydrated & Superfoods",
     tagline: "Onion · Garlic · Tomato · Moringa",
     desc: "Dehydrated onion and garlic in pieces (flakes, chopped, minced, granules) and powder formats, tomato powder, plus moringa and psyllium superfood lines for nutraceutical and food-processing buyers.",
@@ -1179,6 +1208,7 @@ const CATALOG = {
         products: [
           {
             id: "moringa",
+            photo: IMG + "dehydrated/moringa.jpg",
             name: "Moringa Leaf Powder",
             short: "Shade-dried moringa oleifera leaf powder, nutrient-dense and lab-tested for nutraceutical use.",
             origin: "Tamil Nadu, India", crop: "Year-round", texture: "leaf",
@@ -1190,6 +1220,7 @@ const CATALOG = {
           },
           {
             id: "psyllium",
+            photo: IMG + "dehydrated/psyllium.jpg",
             name: "Psyllium Husk",
             short: "99% pure psyllium husk and powder from Sidhpur, the world's psyllium hub, for dietary-fibre applications.",
             origin: "Gujarat, India", crop: "March – April", texture: "generic",

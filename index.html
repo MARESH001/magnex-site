@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=17">
+<link rel="stylesheet" href="assets/css/style.css?v=18">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><rect width='44' height='44' rx='8' fill='%2317171a'/><path d='M10 32 L17 13 L22 25 L27 13 L34 32' fill='none' stroke='%23c9a86a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 </head>
 <body>
@@ -148,7 +148,7 @@
   </div>
 </section>
 
-<script src="assets/js/data.js?v=13"></script>
+<script src="assets/js/data.js?v=14"></script>
 <script src="assets/js/textures.js?v=8"></script>
 <script src="assets/js/widgets.js?v=9"></script>
 <script>
@@ -185,7 +185,7 @@ function pageInit() {
   document.getElementById("tfCount").textContent = `${totalProducts}+ products · ${cats.length} categories`;
   const cardHTML = (cid, c, dup) => `
     <a class="tfcard" href="category.html?cat=${cid}" ${dup ? 'tabindex="-1" aria-hidden="true"' : ""}>
-      <div class="tfcard__media"><canvas data-tex="${c.texture}" data-seed="tf-${cid}"></canvas></div>
+      <div class="tfcard__media">${c.photo ? `<img src="${c.photo}" alt="${c.name}" loading="lazy">` : `<canvas data-tex="${c.texture}" data-seed="tf-${cid}"></canvas>`}</div>
       <div class="tfcard__body">
         <span class="tfcard__name">${c.name}</span>
         <span class="tfcard__tag">${c.tagline}</span>
