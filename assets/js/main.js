@@ -41,12 +41,14 @@ function buildNav() {
         </div>
       </div>
       <a class="nav__link" href="index.html#why">Why Us</a>
+      <a class="nav__link" href="presence.html">Presence</a>
       <a class="nav__link" href="index.html#faq">FAQ</a>
-      <a class="nav__link" href="index.html#contact">Contact</a>
     </nav>
-    <a class="btn btn--ghost btn--sm" href="index.html#contact" style="border-color:var(--gold);color:var(--gold)">Get a Quote</a>
+    <a class="btn btn--solid btn--sm nav__cta" href="contact.html">Contact Us</a>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>`;
+  const here = location.pathname.split("/").pop() || "index.html";
+  el.querySelectorAll(".nav__link, .nav__cta").forEach(a => { if (a.getAttribute("href") === here) a.classList.add("is-active"); });
   document.body.prepend(el);
 
   // mobile drawer
@@ -57,9 +59,10 @@ function buildNav() {
     ${cats.map(([cid, c]) => `<a href="${catLink(cid)}">${c.name}</a>`).join("")}
     <h4>Company</h4>
     <a href="index.html#why">Why Us</a>
+    <a href="presence.html">Presence</a>
     <a href="index.html#faq">FAQ</a>
-    <a href="index.html#contact">Contact</a>
-    <div style="margin-top:28px"><a class="btn btn--solid" href="index.html#contact" style="width:100%">Get a Quote</a></div>`;
+    <a href="contact.html">Contact Us</a>
+    <div style="margin-top:28px"><a class="btn btn--solid" href="contact.html" style="width:100%">Contact Us</a></div>`;
   document.body.appendChild(m);
 
   const burger = el.querySelector("#burger");
@@ -121,8 +124,9 @@ function buildFooter() {
           <li><a href="index.html">Home</a></li>
           <li><a href="products.html">Products</a></li>
           <li><a href="index.html#why">Why Us</a></li>
+          <li><a href="presence.html">Presence</a></li>
           <li><a href="index.html#faq">FAQ</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
       <div>
