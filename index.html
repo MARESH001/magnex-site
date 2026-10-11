@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=16">
+<link rel="stylesheet" href="assets/css/style.css?v=17">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><rect width='44' height='44' rx='8' fill='%2317171a'/><path d='M10 32 L17 13 L22 25 L27 13 L34 32' fill='none' stroke='%23c9a86a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 </head>
 <body>
@@ -93,6 +93,47 @@
   </div>
 </section>
 
+<!-- ============ PRESENCE ============ -->
+<section class="section" id="presence">
+  <div class="wrap">
+    <p class="eyebrow rv">Reach</p>
+    <h2 class="h-section rv">Supplying Indian Agro Products<br>Across Every Major Market</h2>
+    <p class="lede rv" style="margin-top:20px">Our export network spans the Americas, Europe, Africa, Asia and Oceania, supporting long-term partnerships with importers, distributors and food brands worldwide.</p>
+    <figure class="wmap rv" id="wmap" aria-label="World map highlighting the countries Magnex exports to">
+      <div class="wmap__svg" id="wmapSvg"></div>
+      <figcaption class="wmap__legend"><span class="wmap__key"></span> Active export destinations · 43 countries <span class="wmap__tip" id="wmapTip"></span></figcaption>
+    </figure>
+    <div class="regions">
+      <div class="region rv">
+        <div class="region__n">04</div>
+        <h3 class="region__t">The Americas</h3>
+        <p class="region__d">Argentina, Canada, Chile, United States of America</p>
+      </div>
+      <div class="region rv">
+        <div class="region__n">09</div>
+        <h3 class="region__t">Africa</h3>
+        <p class="region__d">Algeria, Benin, Egypt, Libya, Mauritania, Morocco, Nigeria, Togo, Tunisia</p>
+      </div>
+      <div class="region rv">
+        <div class="region__n">16</div>
+        <h3 class="region__t">Asia</h3>
+        <p class="region__d">Georgia, Iran, Iraq, Israel, Jordan, Kuwait, Lebanon, Oman, Pakistan, Saudi Arabia, South Korea, Syria, Taiwan, Turkey, United Arab Emirates, Yemen</p>
+      </div>
+      <div class="region rv">
+        <div class="region__n">13</div>
+        <h3 class="region__t">Europe</h3>
+        <p class="region__d">Albania, Belgium, France, Germany, Italy, Netherlands, Norway, Romania, Russia, Slovenia, Sweden, Ukraine, United Kingdom</p>
+      </div>
+      <div class="region rv">
+        <div class="region__n">01</div>
+        <h3 class="region__t">Oceania</h3>
+        <p class="region__d">Australia</p>
+      </div>
+    </div>
+    <p class="presence__note rv">Full container loads ship from JNPT, Nhava Sheva (Mumbai), India's largest container port, with export documentation and destination-market compliance handled in-house. Not on the list yet? <a href="contact.html">Tell us your destination</a> and we will confirm supply terms.</p>
+  </div>
+</section>
+
 <!-- ============ FAQ ============ -->
 <section class="section" id="faq">
   <div class="wrap">
@@ -111,7 +152,28 @@
 <script src="assets/js/textures.js?v=8"></script>
 <script src="assets/js/widgets.js?v=9"></script>
 <script>
+const EXPORT_CODES = ['ae', 'al', 'ar', 'au', 'be', 'bj', 'ca', 'cl', 'de', 'dz', 'eg', 'fr', 'gb', 'ge', 'il', 'iq', 'ir', 'it', 'jo', 'kr', 'kw', 'lb', 'ly', 'ma', 'mr', 'ng', 'nl', 'no', 'om', 'pk', 'ro', 'ru', 'sa', 'se', 'si', 'sy', 'tg', 'tn', 'tr', 'tw', 'ua', 'us', 'ye'];
+const COUNTRY_NAMES = {'ar':'Argentina', 'ca':'Canada', 'cl':'Chile', 'us':'United States of America', 'dz':'Algeria', 'bj':'Benin', 'eg':'Egypt', 'ly':'Libya', 'mr':'Mauritania', 'ma':'Morocco', 'ng':'Nigeria', 'tg':'Togo', 'tn':'Tunisia', 'ge':'Georgia', 'ir':'Iran', 'iq':'Iraq', 'il':'Israel', 'jo':'Jordan', 'kw':'Kuwait', 'lb':'Lebanon', 'om':'Oman', 'pk':'Pakistan', 'sa':'Saudi Arabia', 'kr':'South Korea', 'sy':'Syria', 'tw':'Taiwan', 'tr':'Turkey', 'ae':'United Arab Emirates', 'ye':'Yemen', 'al':'Albania', 'be':'Belgium', 'fr':'France', 'de':'Germany', 'it':'Italy', 'nl':'Netherlands', 'no':'Norway', 'ro':'Romania', 'ru':'Russia', 'si':'Slovenia', 'se':'Sweden', 'ua':'Ukraine', 'gb':'United Kingdom', 'au':'Australia'};
+function initPresenceMap() {
+  // inline the map so each country path can be styled; highlighted ids are ISO alpha-2
+  fetch("assets/img/world-map.svg").then(r => r.text()).then(svg => {
+    const box = document.getElementById("wmapSvg");
+    box.innerHTML = svg.replace(/<\?xml[^>]*>|<!DOCTYPE[^>]*>/g, "");
+    const el = box.querySelector("svg");
+    el.removeAttribute("width"); el.removeAttribute("height");
+    el.querySelectorAll("[id]").forEach(p => { p.removeAttribute("style"); p.removeAttribute("fill"); });
+    const tip = document.getElementById("wmapTip");
+    EXPORT_CODES.forEach((c, i) => {
+      const p = el.querySelector("#" + c); if (!p) return;
+      p.classList.add("is-on"); p.style.setProperty("--i", i);
+      p.addEventListener("pointerenter", () => { tip.textContent = COUNTRY_NAMES[c]; });
+      p.addEventListener("pointerleave", () => { tip.textContent = ""; });
+    });
+  }).catch(() => { document.getElementById("wmapSvg").innerHTML = '<img src="assets/img/world-map.svg" alt="World map">'; });
+}
+
 function pageInit() {
+  initPresenceMap();
   /* marquee */
   const words = ["Basmati Rice","Assam Tea","Robusta Coffee","Turmeric Powder","Green Cardamom","Kabul Chickpeas","Hulled Sesame","Cumin Seeds","Cashew Kernels","Black Pepper","Red Chilli","Wheat & Millets","Dehydrated Onion"];
   const half = words.map(w => `<span>${w}</span>`).join("");
@@ -157,6 +219,6 @@ function pageInit() {
   document.querySelectorAll("[data-count]").forEach(el => cio.observe(el));
 }
 </script>
-<script src="assets/js/main.js?v=12"></script>
+<script src="assets/js/main.js?v=13"></script>
 </body>
 </html>

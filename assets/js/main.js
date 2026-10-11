@@ -41,7 +41,7 @@ function buildNav() {
         </div>
       </div>
       <a class="nav__link" href="index.html#why">Why Us</a>
-      <a class="nav__link" href="presence.html">Presence</a>
+      <a class="nav__link" href="index.html#presence">Presence</a>
       <a class="nav__link" href="index.html#faq">FAQ</a>
     </nav>
     <a class="btn btn--solid btn--sm nav__cta" href="contact.html">Contact Us</a>
@@ -59,7 +59,7 @@ function buildNav() {
     ${cats.map(([cid, c]) => `<a href="${catLink(cid)}">${c.name}</a>`).join("")}
     <h4>Company</h4>
     <a href="index.html#why">Why Us</a>
-    <a href="presence.html">Presence</a>
+    <a href="index.html#presence">Presence</a>
     <a href="index.html#faq">FAQ</a>
     <a href="contact.html">Contact Us</a>
     <div style="margin-top:28px"><a class="btn btn--solid" href="contact.html" style="width:100%">Contact Us</a></div>`;
@@ -124,7 +124,7 @@ function buildFooter() {
           <li><a href="index.html">Home</a></li>
           <li><a href="products.html">Products</a></li>
           <li><a href="index.html#why">Why Us</a></li>
-          <li><a href="presence.html">Presence</a></li>
+          <li><a href="index.html#presence">Presence</a></li>
           <li><a href="index.html#faq">FAQ</a></li>
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
