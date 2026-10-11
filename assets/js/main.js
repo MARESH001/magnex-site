@@ -200,7 +200,7 @@ function initReveal() {
 
 /* looping strips only run while on screen (and while the tab is visible) */
 function initLoopGating() {
-  const loops = document.querySelectorAll(".strip, .tradefeed");
+  const loops = document.querySelectorAll(".strip, .tradefeed, .voyage");
   if (!loops.length) return;
   const io = new IntersectionObserver(es =>
     es.forEach(e => e.target.classList.toggle("is-offscreen", !e.isIntersecting)), { threshold: 0 });

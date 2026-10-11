@@ -128,6 +128,33 @@
 /* nav gets a crisp edge when stuck */
 :root[data-theme="light"] .nav.is-stuck { box-shadow: 0 6px 24px rgba(7,42,61,.08); }
 
+/* trade routes on the presence map */
+.wmap__svg .lanes path.lane { fill: none; stroke: var(--gold); stroke-width: .8; stroke-dasharray: 2.5 3.5; opacity: .7; animation: lane-flow 1.4s linear infinite, lane-in .8s var(--ease-out) both; animation-delay: 0s, calc(var(--i, 0) * 90ms + .5s); }
+@keyframes lane-flow { to { stroke-dashoffset: -6; } }
+@keyframes lane-in { from { opacity: 0; } }
+.wmap__svg .lane__dot { fill: var(--gold-lite); }
+.wmap__svg .port { fill: var(--gold-lite); }
+.wmap__svg .port--pulse { fill: none; stroke: var(--gold-lite); stroke-width: 1; transform-box: fill-box; transform-origin: center; animation: port-pulse 2.4s var(--ease-out) infinite; }
+@keyframes port-pulse { from { transform: scale(1); opacity: .9; } to { transform: scale(4); opacity: 0; } }
+
+/* voyage band: ship crossing an ocean between sections */
+.voyage { position: relative; height: 150px; overflow: hidden; background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); border-block: 1px solid var(--line-soft); }
+.voyage__sky { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.voyage__sea use { fill: url(#vsea); }
+.voyage__sea--back { opacity: .35; transform: translate(0, 92px); animation: sea-drift 9s linear infinite; }
+.voyage__sea--front { opacity: .85; transform: translate(0, 104px); animation: sea-drift 6s linear infinite reverse; }
+@keyframes sea-drift { from { transform: translate(0, var(--sy, 100px)); } to { transform: translate(-1200px, var(--sy, 100px)); } }
+.voyage__sea--back { --sy: 92px; } .voyage__sea--front { --sy: 104px; }
+.voyage__ship { animation: sail 28s linear infinite, bob 2.6s ease-in-out infinite; filter: drop-shadow(0 6px 6px rgba(0,0,0,.25)); }
+@keyframes sail { from { transform: translateX(-80px); } to { transform: translateX(1300px); } }
+@keyframes bob { 0%, 100% { translate: 0 82px; rotate: -1.5deg; } 50% { translate: 0 88px; rotate: 1.5deg; } }
+.voyage.is-offscreen .voyage__ship, .voyage.is-offscreen .voyage__sea { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .voyage__sea { animation: none; }
+  .voyage__ship { animation: none; transform: translateX(560px); translate: 0 84px; }
+  .wmap__svg .lanes path.lane, .wmap__svg .port--pulse { animation: none; }
+}
+
 /* theme toggle */
 .theme-btn {
   width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0;
