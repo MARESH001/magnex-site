@@ -99,7 +99,7 @@ function buildFooter() {
   const cats = Object.entries(CATALOG);
   const pops = POPULAR.map(findProduct).filter(Boolean);
   const f = document.createElement("footer");
-  f.className = "foot"; f.id = "contact";
+  f.className = "foot"; f.id = "footer";
   f.innerHTML = `
   <div class="wrap">
     <div class="foot__grid">
@@ -154,15 +154,45 @@ function buildFooter() {
   wa.className = "wa"; wa.href = SITE.whatsapp; wa.target = "_blank"; wa.rel = "noopener";
   wa.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.1.2-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .2 0 .7-.2 1.3z"/></svg>
     Chat with us`;
+  // pre-fill the chat at click time so a product page passes its product name
+  wa.addEventListener("click", () => {
+    const pn = document.getElementById("pdName");
+    wa.href = SITE.whatsapp + "?text=" + encodeURIComponent(SITE.whatsappText + (pn ? pn.textContent : ""));
+  });
   document.body.appendChild(wa);
 }
 
-/* scroll-reveal */
+/* scroll-reveal — fires once per element; siblings in the same parent stagger 60ms (capped) */
 function initReveal() {
+  // index children of grids so CSS can stagger them (--i drives --rv-delay)
+  document.querySelectorAll(".why, .stats, .pgrid, .catgrid").forEach(grid =>
+    [...grid.children].forEach((c, i) => c.style.setProperty("--i", Math.min(i, 8))));
+  // .rv siblings that share a parent rise in sequence instead of all at once
+  document.querySelectorAll(".rv").forEach(el => {
+    const sibs = [...el.parentElement.children].filter(c => c.classList.contains("rv"));
+    const idx = sibs.indexOf(el);
+    if (sibs.length > 1 && idx > 0 && !el.style.getPropertyValue("--rv-delay"))
+      el.style.setProperty("--rv-delay", Math.min(idx, 8) * 60 + "ms");
+  });
   const io = new IntersectionObserver(es => {
     es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
   }, { threshold: .12, rootMargin: "0px 0px -40px" });
   document.querySelectorAll(".rv").forEach(el => io.observe(el));
+  // clear the delay after the reveal so later transitions aren't held back
+  document.addEventListener("transitionend", e => {
+    if (e.target.classList && e.target.classList.contains("is-in")) e.target.style.removeProperty("--rv-delay");
+  });
+}
+
+/* looping strips only run while on screen (and while the tab is visible) */
+function initLoopGating() {
+  const loops = document.querySelectorAll(".strip, .tradefeed");
+  if (!loops.length) return;
+  const io = new IntersectionObserver(es =>
+    es.forEach(e => e.target.classList.toggle("is-offscreen", !e.isIntersecting)), { threshold: 0 });
+  loops.forEach(el => io.observe(el));
+  document.addEventListener("visibilitychange", () =>
+    loops.forEach(el => el.classList.toggle("is-offscreen", document.hidden)));
 }
 
 /* FAQ accordion — pass [[q,a],...] and a container */
@@ -204,4 +234,5 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof pageInit === "function") pageInit();
   paintAllTextures();
   initReveal();
+  initLoopGating();
 });

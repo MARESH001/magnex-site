@@ -165,10 +165,13 @@ function buildMagnifier(frame, type, seed, zoom = 2.6, photo = null) {
   };
 
   const paintBoth = () => { paintTexture(view, type, seed, 1); paintTexture(SRC, type, seed, 1); };
-  const loadPhoto = src => {
+  // swap = true when replacing a photo already on screen: blur-mask the crossfade
+  const loadPhoto = (src, swap = false) => {
     const img = new Image();
-    img.onload = () => { cover(view, img); cover(SRC, img); };
-    img.onerror = paintBoth;
+    if (swap) frame.classList.add("is-swapping");
+    const done = () => { if (swap) requestAnimationFrame(() => frame.classList.remove("is-swapping")); };
+    img.onload = () => { cover(view, img); cover(SRC, img); done(); };
+    img.onerror = () => { paintBoth(); done(); };
     img.src = src;
   };
   if (photo) loadPhoto(photo); else paintBoth();
@@ -209,5 +212,5 @@ function buildMagnifier(frame, type, seed, zoom = 2.6, photo = null) {
   });
 
   // allow the page to swap the photo (e.g. variety selection)
-  return { setPhoto(src) { photo = src || null; if (src) loadPhoto(src); else paintBoth(); } };
+  return { setPhoto(src) { if (src === photo) return; photo = src || null; if (src) loadPhoto(src, true); else paintBoth(); } };
 }
