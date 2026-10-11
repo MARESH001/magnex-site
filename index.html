@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=25">
+<link rel="stylesheet" href="assets/css/style.css?v=26">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23072a3d'/><g transform='translate(10 22) scale(.8)'><path d='M99.9 55.2 L82.6 38.9 L82.1 47.9 L74.6 47.8 L74.5 0.0 L50.4 25.0 L49.8 3.0 L0.0 55.2 L21.6 55.3 L34.3 42.3 L34.5 55.3 L49.9 55.3 L50.1 48.1 L58.7 39.0 L59.5 55.4 Z' fill='%232ea7db'/></g></svg>">
 </head>
 <body>
@@ -58,21 +58,13 @@
   </div>
 </section>
 
-<!-- ============ VOYAGE BAND — ship sailing between sections ============ -->
+<!-- ============ OCEAN DIVIDER — moving water between sections ============ -->
 <div class="voyage" aria-hidden="true">
   <svg class="voyage__sky" viewBox="0 0 1200 160" preserveAspectRatio="none">
     <defs>
       <linearGradient id="vsea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2ea7db"/><stop offset="1" stop-color="#0f6fa8"/></linearGradient>
       <path id="vwave" d="M0 20 C 100 0, 200 40, 300 20 S 500 0, 600 20 S 800 40, 900 20 S 1100 0, 1200 20 V 160 H 0 Z"/>
     </defs>
-    <g class="voyage__ship">
-      <g transform="translate(-90 -8) scale(3.1)">
-        <path d="M0 7 L3 12 L24 12 L28 7 Z" fill="#0f6fa8"/>
-        <rect x="4" y="3" width="4" height="4" fill="#2ea7db"/><rect x="9" y="3" width="4" height="4" fill="#5fc9f5"/><rect x="14" y="3" width="4" height="4" fill="#2ea7db"/><rect x="19" y="3" width="4" height="4" fill="#5fc9f5"/>
-        <rect x="9" y="0" width="4" height="3" fill="#5fc9f5"/><rect x="14" y="0" width="4" height="3" fill="#2ea7db"/>
-        <rect x="1.5" y="1" width="3" height="6" fill="#45d4fe"/><rect x="2.2" y="-1" width="1.2" height="2" fill="#45d4fe"/>
-      </g>
-    </g>
     <g class="voyage__sea voyage__sea--back"><use href="#vwave" x="0"/><use href="#vwave" x="1200"/></g>
     <g class="voyage__sea voyage__sea--front"><use href="#vwave" x="0"/><use href="#vwave" x="1200"/></g>
   </svg>

@@ -138,20 +138,16 @@
 @keyframes port-pulse { from { transform: scale(1); opacity: .9; } to { transform: scale(4); opacity: 0; } }
 
 /* voyage band: ship crossing an ocean between sections */
-.voyage { position: relative; height: 150px; overflow: hidden; background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); border-block: 1px solid var(--line-soft); }
+.voyage { position: relative; height: 120px; overflow: hidden; background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); border-block: 1px solid var(--line-soft); }
 .voyage__sky { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .voyage__sea use { fill: url(#vsea); }
-.voyage__sea--back { opacity: .35; transform: translate(0, 92px); animation: sea-drift 9s linear infinite; }
-.voyage__sea--front { opacity: .85; transform: translate(0, 104px); animation: sea-drift 6s linear infinite reverse; }
+.voyage__sea--back { opacity: .35; transform: translate(0, 56px); animation: sea-drift 9s linear infinite; }
+.voyage__sea--front { opacity: .85; transform: translate(0, 70px); animation: sea-drift 6s linear infinite reverse; }
 @keyframes sea-drift { from { transform: translate(0, var(--sy, 100px)); } to { transform: translate(-1200px, var(--sy, 100px)); } }
-.voyage__sea--back { --sy: 92px; } .voyage__sea--front { --sy: 104px; }
-.voyage__ship { animation: sail 28s linear infinite, bob 2.6s ease-in-out infinite; filter: drop-shadow(0 6px 6px rgba(0,0,0,.25)); }
-@keyframes sail { from { transform: translateX(-80px); } to { transform: translateX(1300px); } }
-@keyframes bob { 0%, 100% { translate: 0 82px; rotate: -1.5deg; } 50% { translate: 0 88px; rotate: 1.5deg; } }
-.voyage.is-offscreen .voyage__ship, .voyage.is-offscreen .voyage__sea { animation-play-state: paused; }
+.voyage__sea--back { --sy: 56px; } .voyage__sea--front { --sy: 70px; }
+.voyage.is-offscreen .voyage__sea { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
   .voyage__sea { animation: none; }
-  .voyage__ship { animation: none; transform: translateX(560px); translate: 0 84px; }
   .wmap__svg .lanes path.lane, .wmap__svg .port--pulse { animation: none; }
 }
 
