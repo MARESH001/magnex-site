@@ -278,6 +278,7 @@ const CATALOG = {
         products: [
           {
             id: "assam-ctc-bp",
+            photo: IMG + "tea/assam-ctc-bp.jpg",
             name: "Assam CTC – BP Grade",
             short: "Strong, malty, full-bodied. The backbone of breakfast blends worldwide.",
             origin: "Assam, India", crop: "April – November", texture: "tea",
@@ -291,6 +292,7 @@ const CATALOG = {
           },
           {
             id: "assam-ctc-bop",
+            photo: IMG + "tea/assam-ctc-bop.jpg",
             name: "Assam CTC – BOP / Standard",
             short: "Consistent, brisk character. Ideal for mass-market tea bags and blending.",
             origin: "Assam, India", crop: "April – November", texture: "tea",
@@ -303,6 +305,7 @@ const CATALOG = {
           },
           {
             id: "assam-orthodox",
+            photo: IMG + "tea/assam-orthodox.jpg",
             name: "Assam Orthodox Black Tea",
             short: "Malty with honey notes. A step up for specialty retail.",
             origin: "Assam, India", crop: "May – July (2nd flush)", texture: "tea",
@@ -315,6 +318,7 @@ const CATALOG = {
           },
           {
             id: "darjeeling-orthodox",
+            photo: IMG + "tea/darjeeling-orthodox.jpg",
             name: "Darjeeling Orthodox",
             short: "The \"champagne of teas.\" Muscatel aroma, light golden liquor, globally sought-after.",
             origin: "Darjeeling, India", crop: "March – November (flush-wise)", texture: "tea",
@@ -328,6 +332,7 @@ const CATALOG = {
           },
           {
             id: "nilgiri-orthodox",
+            photo: IMG + "tea/nilgiri-orthodox.jpg",
             name: "Nilgiri Orthodox",
             short: "Fragrant, bright, and clean. Well-suited to iced teas and delicate blends.",
             origin: "Nilgiris, India", crop: "Year-round", texture: "tea",
@@ -340,6 +345,7 @@ const CATALOG = {
           },
           {
             id: "nilgiri-ctc",
+            photo: IMG + "tea/nilgiri-ctc.jpg",
             name: "Nilgiri CTC",
             short: "Brisk and full-flavoured. Popular across the Middle East and CIS markets.",
             origin: "Nilgiris, India", crop: "Year-round", texture: "tea",
@@ -352,6 +358,7 @@ const CATALOG = {
           },
           {
             id: "green-tea-leaf",
+            photo: IMG + "tea/green-tea-leaf.jpg",
             name: "Indian Green Tea – Leaf",
             short: "Lightly processed whole leaf. Growing demand in health-conscious markets.",
             origin: "India", crop: "March – November", texture: "leaf",
