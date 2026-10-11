@@ -247,10 +247,15 @@ const CATALOG = {
           },
           {
             id: "broken-rice",
+            photo: IMG + "rice/broken-white-sortex.jpg",
             name: "100% Broken Rice",
             short: "Sortex-cleaned broken rice for food processing, brewing and staple programs, supplied at competitive volume pricing.",
             origin: "India", crop: "Year-round", texture: "rice",
-            varieties: ["White Broken – Sortex", "Parboiled Broken", "Broken – Brewers Grade"],
+            varieties: [
+              { name: "White Broken – Sortex", photo: IMG + "rice/broken-white-sortex.jpg" },
+              { name: "Parboiled Broken", photo: IMG + "rice/broken-parboiled.jpg" },
+              { name: "Broken – Brewers Grade", photo: IMG + "rice/broken-brewers.jpg" }
+            ],
             specs: [
               ["Broken", "100%"], ["Moisture", "14% max."], ["Foreign Matter", "0.5% max."],
               ["Damaged & Discoloured", "2% max."], ["20' Container", "25 MT"],
