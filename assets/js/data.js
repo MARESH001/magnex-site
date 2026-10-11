@@ -228,10 +228,16 @@ const CATALOG = {
           },
           {
             id: "pr11",
+            photo: IMG + "rice/pr11-steam.jpg",
             name: "PR 11 / PR 14 Rice",
             short: "Long-grain Non-Basmati rice with excellent cooking separation, supplied in steam and sella grades for Middle-East and African markets.",
             origin: "India", crop: "October, November", texture: "rice",
-            varieties: ["PR 11 – Steam", "PR 11 – Sella", "PR 11 – Golden Sella", "PR 14 – Steam"],
+            varieties: [
+              { name: "PR 11 – Steam", photo: IMG + "rice/pr11-steam.jpg" },
+              { name: "PR 11 – Sella", photo: IMG + "rice/pr11-sella.jpg" },
+              { name: "PR 11 – Golden Sella", photo: IMG + "rice/pr11-golden-sella.jpg" },
+              { name: "PR 14 – Steam", photo: IMG + "rice/pr14-steam.jpg" }
+            ],
             specs: [
               ["Average Length", "6.8 – 7.0 mm"], ["Broken", "2% max."], ["Moisture", "13% max."],
               ["Foreign Matter", "NIL"], ["Damaged & Discoloured", "1.5% max."],
