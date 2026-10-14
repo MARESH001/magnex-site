@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<script>(function(){var t;try{t=localStorage.getItem("magnex-theme")}catch(e){}document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")})();</script>
+<script>(function(){var q=new URLSearchParams(location.search).get("theme"),t;if(q&&/^(gold|dark|light)$/.test(q)){t=q;try{localStorage.setItem("magnex-theme",t)}catch(e){}}else{try{t=localStorage.getItem("magnex-theme")}catch(e){}}document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Category — Magnex International Trade</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=26">
+<link rel="stylesheet" href="assets/css/style.css?v=27">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23072a3d'/><g transform='translate(10 22) scale(.8)'><path d='M99.9 55.2 L82.6 38.9 L82.1 47.9 L74.6 47.8 L74.5 0.0 L50.4 25.0 L49.8 3.0 L0.0 55.2 L21.6 55.3 L34.3 42.3 L34.5 55.3 L49.9 55.3 L50.1 48.1 L58.7 39.0 L59.5 55.4 Z' fill='%232ea7db'/></g></svg>">
 </head>
 <body>
@@ -120,6 +120,6 @@ function pageInit() {
   }
 }
 </script>
-<script src="assets/js/main.js?v=15"></script>
+<script src="assets/js/main.js?v=16"></script>
 </body>
 </html>

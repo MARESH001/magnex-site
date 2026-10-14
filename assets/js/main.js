@@ -43,10 +43,11 @@ function buildNav() {
       <a class="nav__link" href="index.html#faq">FAQ</a>
     </nav>
     <a class="btn btn--solid btn--sm nav__cta" href="contact.html">Contact Us</a>
-    <button class="theme-btn" id="themeBtn" aria-label="Switch colour theme" title="Light / dark">
-      <svg class="ico-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      <svg class="ico-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-    </button>
+    <div class="theme-sw" id="themeSw" role="group" aria-label="Colour theme">
+      <button class="sw-gold" data-theme="gold" title="Gold & black" aria-label="Gold and black theme"><i></i></button>
+      <button class="sw-dark" data-theme="dark" title="Blue & black" aria-label="Blue and black theme"><i></i></button>
+      <button class="sw-light" data-theme="light" title="Blue & white" aria-label="Blue and white theme"><i></i></button>
+    </div>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>`;
   const here = location.pathname.split("/").pop() || "index.html";
@@ -67,13 +68,16 @@ function buildNav() {
     <div style="margin-top:28px"><a class="btn btn--solid" href="contact.html" style="width:100%">Contact Us</a></div>`;
   document.body.appendChild(m);
 
-  // theme toggle — choice persists; without a choice the OS preference applies (see bootstrap in <head>)
-  el.querySelector("#themeBtn").addEventListener("click", () => {
-    const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
-    document.documentElement.dataset.theme = next;
-    try { localStorage.setItem("magnex-theme", next); } catch (e) {}
-    paintAllTextures();
+  // theme switcher — choice persists on this device; ?theme=gold|dark|light in the URL also sets it (for sharing)
+  const sw = el.querySelector("#themeSw");
+  const markTheme = () => sw.querySelectorAll("button").forEach(b => b.classList.toggle("is-on", b.dataset.theme === document.documentElement.dataset.theme));
+  sw.addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    document.documentElement.dataset.theme = b.dataset.theme;
+    try { localStorage.setItem("magnex-theme", b.dataset.theme); } catch (err) {}
+    markTheme(); paintAllTextures();
   });
+  markTheme();
 
   const burger = el.querySelector("#burger");
   burger.addEventListener("click", () => {
