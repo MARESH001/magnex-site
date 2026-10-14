@@ -65,19 +65,26 @@ function buildNav() {
     <a href="index.html#presence">Presence</a>
     <a href="index.html#faq">FAQ</a>
     <a href="contact.html">Contact Us</a>
-    <div style="margin-top:28px"><a class="btn btn--solid" href="contact.html" style="width:100%">Contact Us</a></div>`;
+    <div style="margin-top:28px"><a class="btn btn--solid" href="contact.html" style="width:100%">Contact Us</a></div>
+    <h4 class="mnav__theme">Colour theme</h4>
+    <div class="theme-sw" data-sw="mobile">
+      <button class="sw-gold" data-theme="gold" aria-label="Gold and black theme"><i></i></button>
+      <button class="sw-dark" data-theme="dark" aria-label="Blue and black theme"><i></i></button>
+      <button class="sw-light" data-theme="light" aria-label="Blue and white theme"><i></i></button>
+    </div>`;
   document.body.appendChild(m);
 
   // theme switcher — choice persists on this device; ?theme=gold|dark|light in the URL also sets it (for sharing)
-  const sw = el.querySelector("#themeSw");
-  const markTheme = () => sw.querySelectorAll("button").forEach(b => b.classList.toggle("is-on", b.dataset.theme === document.documentElement.dataset.theme));
-  sw.addEventListener("click", e => {
+  const sws = [el.querySelector("#themeSw"), m.querySelector(".theme-sw")];
+  const markTheme = () => sws.forEach(sw => sw.querySelectorAll("button").forEach(b => b.classList.toggle("is-on", b.dataset.theme === document.documentElement.dataset.theme)));
+  sws.forEach(sw => sw.addEventListener("click", e => {
     const b = e.target.closest("button"); if (!b) return;
     document.documentElement.dataset.theme = b.dataset.theme;
     try { localStorage.setItem("magnex-theme", b.dataset.theme); } catch (err) {}
     markTheme(); paintAllTextures();
-  });
+  }));
   markTheme();
+
 
   const burger = el.querySelector("#burger");
   burger.addEventListener("click", () => {
