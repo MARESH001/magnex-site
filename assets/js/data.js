@@ -12,10 +12,12 @@
 
 const SITE = {
   name: "MAGNEX",
-  sub: "INTERNATIONAL TRADE",
+  sub: "INTERNATIONAL TRADE LLP",
+  legal: "Magnex International Trade LLP",
   phone: "+91 95350 27123",
-  email: "magnextrade@gmail.com",
-  address: "Magnex House, Andheri (E),<br>Mumbai - 400059, India",
+  email: "info@magnextrade.com",
+  formEmail: "magnextrade@gmail.com",   // activated FormSubmit relay inbox; change only after re-activating
+  address: "Magnex International Trade LLP,<br>Bengaluru - 560091, India",
   whatsapp: "https://wa.me/919535027123",
   whatsappText: "Hello Magnex International Trade, I would like a quote for: ",
 };

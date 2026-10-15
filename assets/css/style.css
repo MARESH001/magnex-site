@@ -198,8 +198,8 @@
 .theme-btn:active { transform: scale(.94); }
 .theme-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .theme-btn .ico-sun { display: none; }
-:root[data-theme="light"] .theme-btn .ico-sun { display: block; }
-:root[data-theme="light"] .theme-btn .ico-moon { display: none; }
+:root[data-theme="gold"] .theme-btn .ico-sun { display: block; }
+:root[data-theme="gold"] .theme-btn .ico-moon { display: none; }
 
 /* cross-document page transition (Chrome / Safari); other browsers just navigate */
 @view-transition { navigation: auto; }
@@ -1097,9 +1097,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; margin: 0; letter-
   .brand__mark { width: 38px; }
   .brand__name { font-size: 14px; }
   .brand__sub { font-size: 8px; letter-spacing: .16em; }
-  .nav__inner .theme-sw { display: none; }          /* switcher lives in the drawer on phones */
-  .mnav .theme-sw { display: inline-flex; margin: 10px 0 0; }
-  .mnav__theme { font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); margin: 28px 0 0; }
+  .theme-btn { width: 34px; height: 34px; }
   .section { padding: 74px 0; }
   .why, .stats { grid-template-columns: 1fr; }
   .tradefeed { grid-template-columns: 1fr; }

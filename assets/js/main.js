@@ -43,11 +43,10 @@ function buildNav() {
       <a class="nav__link" href="index.html#faq">FAQ</a>
     </nav>
     <a class="btn btn--solid btn--sm nav__cta" href="contact.html">Contact Us</a>
-    <div class="theme-sw" id="themeSw" role="group" aria-label="Colour theme">
-      <button class="sw-gold" data-theme="gold" title="Gold & black" aria-label="Gold and black theme"><i></i></button>
-      <button class="sw-dark" data-theme="dark" title="Blue & black" aria-label="Blue and black theme"><i></i></button>
-      <button class="sw-light" data-theme="light" title="Blue & white" aria-label="Blue and white theme"><i></i></button>
-    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="Switch between white and gold theme" title="White / gold">
+      <svg class="ico-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="ico-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>`;
   const here = location.pathname.split("/").pop() || "index.html";
@@ -66,24 +65,16 @@ function buildNav() {
     <a href="index.html#faq">FAQ</a>
     <a href="contact.html">Contact Us</a>
     <div style="margin-top:28px"><a class="btn btn--solid" href="contact.html" style="width:100%">Contact Us</a></div>
-    <h4 class="mnav__theme">Colour theme</h4>
-    <div class="theme-sw" data-sw="mobile">
-      <button class="sw-gold" data-theme="gold" aria-label="Gold and black theme"><i></i></button>
-      <button class="sw-dark" data-theme="dark" aria-label="Blue and black theme"><i></i></button>
-      <button class="sw-light" data-theme="light" aria-label="Blue and white theme"><i></i></button>
-    </div>`;
+`;
   document.body.appendChild(m);
 
-  // theme switcher — choice persists on this device; ?theme=gold|dark|light in the URL also sets it (for sharing)
-  const sws = [el.querySelector("#themeSw"), m.querySelector(".theme-sw")];
-  const markTheme = () => sws.forEach(sw => sw.querySelectorAll("button").forEach(b => b.classList.toggle("is-on", b.dataset.theme === document.documentElement.dataset.theme)));
-  sws.forEach(sw => sw.addEventListener("click", e => {
-    const b = e.target.closest("button"); if (!b) return;
-    document.documentElement.dataset.theme = b.dataset.theme;
-    try { localStorage.setItem("magnex-theme", b.dataset.theme); } catch (err) {}
-    markTheme(); paintAllTextures();
-  }));
-  markTheme();
+  // theme toggle: white (light) <-> gold; ?theme=gold|light in the URL also sets it
+  el.querySelector("#themeBtn").addEventListener("click", () => {
+    const next = document.documentElement.dataset.theme === "gold" ? "light" : "gold";
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("magnex-theme", next); } catch (err) {}
+    paintAllTextures();
+  });
 
 
   const burger = el.querySelector("#burger");
@@ -131,7 +122,6 @@ function buildFooter() {
         <a class="brand" href="index.html">${LOGO_SVG}
           <span class="brand__txt"><span class="brand__name">${SITE.name}</span><br><span class="brand__sub">${SITE.sub}</span></span>
         </a>
-        <div class="foot__tag">Star Export House · Est. 2008</div>
         <p>Exporting premium Indian agricultural commodities worldwide with a focus on quality, transparency, and reliable service.</p>
         <div class="foot__contact">
           <a href="tel:${SITE.phone.replace(/[^+\d]/g, "")}">${SITE.phone}</a>
@@ -169,7 +159,7 @@ function buildFooter() {
       </div>
     </div>
     <div class="foot__bottom">
-      <span>© ${new Date().getFullYear()} ${SITE.name} International Trade. All rights reserved.</span>
+      <span>© ${new Date().getFullYear()} ${SITE.legal}. All rights reserved.</span>
       <span>ISO Certified · FSSAI Compliant · APEDA Registered</span>
     </div>
   </div>`;
