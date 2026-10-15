@@ -172,6 +172,7 @@ ${d.enquiry}`);
     const d = Object.fromEntries(new FormData(form).entries());
     const payload = {
       _subject: `Quote request — ${d.company} (${d.name})`,
+      _cc: SITE.formEmail && SITE.formEmail !== SITE.email ? SITE.email : undefined,   // copy to the public inbox too
       _template: "table",
       _captcha: "false",
       Name: d.name,
@@ -199,7 +200,7 @@ ${d.enquiry}`);
       // relay failed: hand the same enquiry to the visitor's mail client
       const body = Object.entries(payload).filter(([k]) => !k.startsWith("_"))
         .map(([k, v]) => `${k}: ${v}`).join("\n");
-      location.href = `mailto:${SITE.formEmail || SITE.email}?subject=${encodeURIComponent(payload._subject)}&body=${encodeURIComponent(body)}`;
+      location.href = `mailto:${SITE.email}?cc=${encodeURIComponent(SITE.formEmail || "")}&subject=${encodeURIComponent(payload._subject)}&body=${encodeURIComponent(body)}`;
       say(/activat/i.test(err.message)
         ? "The form service is not activated yet (site owner: open the 'Activate Form' email sent to " + SITE.email + " and click the link). Meanwhile your mail app has been opened with the enquiry pre-filled."
         : "We couldn't reach the form service, so your mail app has been opened with the enquiry pre-filled.", "error");
